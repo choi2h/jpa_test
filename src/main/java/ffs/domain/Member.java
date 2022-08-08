@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class Member extends User{
 
     @ManyToOne
+    @JoinColumn(name="TRAINER_ID")
     private Trainer trainer;
 
     private LocalDateTime startDate;
@@ -20,5 +21,5 @@ public class Member extends User{
     private boolean isPersonalTraining;
 
     @Embedded
-    private Membership membership;
+    private PTMembership ptMembership;
 }

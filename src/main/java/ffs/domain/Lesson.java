@@ -3,10 +3,7 @@ package ffs.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,9 +14,13 @@ public class Lesson {
     @Column(name="LESSON_ID")
     private Long lessonId;
 
-    private Long trainerId;
+    @ManyToOne
+    @JoinColumn(name = "TRAINER_ID")
+    private Trainer trainer;
 
-    private Long memberId;
+    @ManyToOne
+    @JoinColumn(name = "Member_ID")
+    private Member member;
 
     private LocalDateTime date;
 

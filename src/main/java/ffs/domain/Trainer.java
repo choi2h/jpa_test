@@ -14,9 +14,9 @@ import java.util.List;
 public class Trainer extends User{
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "trainer")
     private List<Member> memberList;
 
-    @OneToMany
+    @OneToMany(mappedBy = "trainer")
     private List<Lesson> lessonList;
 }

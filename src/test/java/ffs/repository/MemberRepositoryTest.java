@@ -1,5 +1,6 @@
 package ffs.repository;
 
+import com.mysema.commons.lang.Assert;
 import ffs.domain.Member;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,9 @@ public class MemberRepositoryTest {
         member.setStartDate(LocalDateTime.now());
         member.setEndDate(LocalDateTime.now());
 
+        Long id = memberRepository.save(member);
+
+        Assertions.assertEquals(member, memberRepository.getOne(id));
     }
 
 }
