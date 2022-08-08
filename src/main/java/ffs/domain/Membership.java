@@ -1,11 +1,12 @@
-package domain;
+package ffs.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
-@Getter
+@Getter @Setter
 public class Membership {
 
     private int totalLessonCount;

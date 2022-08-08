@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:~/test #SpringBoot 내에서 작동
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      #     show-sql: true #System.out.-
+      format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug  #log
+    org.hibernate.type: trace
