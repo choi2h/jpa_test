@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter @Setter
+@Getter
 public class Lesson {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="LESSON_ID")
     private Long id;
 
@@ -22,8 +22,28 @@ public class Lesson {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    private LocalDateTime date;
+    private LocalDateTime dateTime;
 
     private String describe;
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+
+        trainer.addLesson(this);
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+
+        member.addLesson(this);
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
 
 }
