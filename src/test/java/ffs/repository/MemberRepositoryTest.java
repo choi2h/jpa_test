@@ -1,6 +1,5 @@
 package ffs.repository;
 
-import com.mysema.commons.lang.Assert;
 import ffs.domain.Member;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -21,21 +20,44 @@ public class MemberRepositoryTest {
 
     @Autowired
     MemberRepository memberRepository;
-    @Autowired
-    EntityManager entityManager;
 
     @Test
     public void insertNewMemberTest() {
-        Member member = new Member();
-        member.setName("hwa");
-        member.setPhoneNumber("1234");
-        member.setPersonalTraining(false);
-        member.setStartDate(LocalDateTime.now());
-        member.setEndDate(LocalDateTime.now());
+        Member member = getMember("hwa", "1234", false);
 
         Long id = memberRepository.save(member);
 
-        Assertions.assertEquals(member, memberRepository.getOne(id));
+        Assertions.assertEquals(member, memberRepository.findOne(id));
+    }
+
+    @Test
+    public void selectAllMemberTest() {
+        Member member1 = getMember("member1", "1234-1234", true);
+        Member member2 = getMember("member2", "1234-5678", true);
+
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        Assertions.assertEquals(2, memberRepository.findAll().size());
+    }
+
+    @Test
+    public void selectFromNameTest() {
+        Member member1 = getMember("member1", "1234-1234", true);
+        memberRepository.save(member1);
+
+        Assertions.assertEquals(member1.getId(), memberRepository.findByName(member1.getName()).get(0).getId());
+    }
+
+    private Member getMember(String name, String phoneNumber, boolean isPersonalTraining) {
+        Member member = new Member();
+        member.setName(name);
+        member.setPhoneNumber(phoneNumber);
+        member.setPersonalTraining(isPersonalTraining);
+        member.setStartDate(LocalDate.now());
+        member.setEndDate(LocalDate.now());
+
+        return member;
     }
 
 }

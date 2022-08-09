@@ -13,17 +13,23 @@ public class TrainerRepository {
 
     private final EntityManager em;
 
-    private Long save(Trainer trainer) {
+    public Long save(Trainer trainer) {
         em.persist(trainer);
         return trainer.getId();
     }
 
-    private Trainer getOne(Long id) {
+    public Trainer getOne(Long id) {
         return em.find(Trainer.class, id);
     }
 
-    private List<Trainer> getAll() {
+    public List<Trainer> getAll() {
         return em.createQuery("Select t from Trainer t", Trainer.class).getResultList();
+    }
+
+    public List<Trainer> getOneByName(String name) {
+        return em.createQuery("select t from Trainer t where t.name = :name", Trainer.class)
+                .setParameter("name", name)
+                .getResultList();
     }
 
 }

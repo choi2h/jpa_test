@@ -31,6 +31,7 @@ public class Member extends User{
 
     public Member() {
         lessonList = new ArrayList<>();
+        ptMembership = new PTMembership();
     }
 
     public void setTrainer(Trainer trainer) {
