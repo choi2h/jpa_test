@@ -12,7 +12,7 @@ public class Lesson {
 
     @Id @GeneratedValue
     @Column(name="LESSON_ID")
-    private Long lessonId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "TRAINER_ID")
