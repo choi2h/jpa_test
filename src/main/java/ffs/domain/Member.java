@@ -5,10 +5,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter @Setter
-@DiscriminatorValue("M")
+@AttributeOverride(name = "id", column = @Column(name="MEMBER_ID"))
 public class Member extends User{
 
     @ManyToOne
@@ -22,4 +23,7 @@ public class Member extends User{
 
     @Embedded
     private PTMembership ptMembership;
+
+    @OneToMany(mappedBy = "member")
+    private List<Lesson> lesson;
 }

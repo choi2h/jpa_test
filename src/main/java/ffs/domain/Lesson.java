@@ -19,7 +19,7 @@ public class Lesson {
     private Trainer trainer;
 
     @ManyToOne
-    @JoinColumn(name = "Member_ID")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     private LocalDateTime date;
