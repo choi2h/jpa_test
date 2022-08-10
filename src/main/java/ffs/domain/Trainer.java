@@ -1,5 +1,6 @@
 package ffs.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +20,11 @@ public class Trainer extends User{
     private LocalDate startDate;
     private int workingHour;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "trainer")
     private List<Member> memberList;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "trainer")
     private List<Lesson> lessonList;
 

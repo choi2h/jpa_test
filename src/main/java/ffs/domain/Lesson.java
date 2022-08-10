@@ -1,5 +1,6 @@
 package ffs.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,10 +15,12 @@ public class Lesson {
     @Column(name="LESSON_ID")
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "TRAINER_ID")
     private Trainer trainer;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
