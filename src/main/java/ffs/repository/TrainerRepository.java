@@ -1,35 +1,16 @@
 package ffs.repository;
 
 import ffs.domain.Trainer;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
-@Repository
-@RequiredArgsConstructor
-public class TrainerRepository {
+public interface TrainerRepository {
 
-    private final EntityManager em;
+    Long save(Trainer trainer);
 
-    public Long save(Trainer trainer) {
-        em.persist(trainer);
-        return trainer.getId();
-    }
+    Trainer findOne(Long id);
 
-    public Trainer getOne(Long id) {
-        return em.find(Trainer.class, id);
-    }
+    List<Trainer> findAll();
 
-    public List<Trainer> getAll() {
-        return em.createQuery("Select t from Trainer t", Trainer.class).getResultList();
-    }
-
-    public List<Trainer> getOneByName(String name) {
-        return em.createQuery("select t from Trainer t where t.name = :name", Trainer.class)
-                .setParameter("name", name)
-                .getResultList();
-    }
-
+    List<Trainer> findOneByName(String name);
 }

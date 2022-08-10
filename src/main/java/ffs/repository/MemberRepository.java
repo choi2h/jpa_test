@@ -1,35 +1,16 @@
 package ffs.repository;
 
 import ffs.domain.Member;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
-@Repository
-@RequiredArgsConstructor
-public class MemberRepository {
+public interface MemberRepository {
 
-    private final EntityManager em;
+    Long save(Member member);
 
-    public Long save(Member member) {
-        em.persist(member);
+    Member findOne(Long id);
 
-        return member.getId();
-    }
+    List<Member> findAll();
 
-    public Member findOne(Long id) {
-        return em.find(Member.class, id);
-    }
-
-    public List<Member> findAll() {
-        return em.createQuery("Select m from Member m", Member.class).getResultList();
-    }
-
-    public List<Member> findByName(String name) {
-        return em.createQuery("Select m from Member m where m.name = :name", Member.class)
-                .setParameter("name", name)
-                .getResultList();
-    }
+    List<Member> findByName(String name);
 }

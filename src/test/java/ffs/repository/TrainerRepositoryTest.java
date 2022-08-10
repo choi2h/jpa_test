@@ -1,6 +1,7 @@
 package ffs.repository;
 
 import ffs.domain.Trainer;
+import ffs.repository.impl.TrainerRepositoryImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,7 +45,7 @@ public class TrainerRepositoryTest {
         Trainer trainer1 = getTrainer("trainer1");
         trainerRepository.save(trainer1);
 
-        Assertions.assertEquals(trainer1, trainerRepository.getOneByName(trainer1.getName()).get(0));
+        Assertions.assertEquals(trainer1, trainerRepository.findOneByName(trainer1.getName()).get(0));
     }
 
     private Trainer getTrainer(String name) {
