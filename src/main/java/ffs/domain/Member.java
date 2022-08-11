@@ -13,7 +13,7 @@ import java.util.List;
 @AttributeOverride(name = "id", column = @Column(name="MEMBER_ID"))
 public class Member extends User{
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="TRAINER_ID")
     private Trainer trainer;
 
@@ -36,6 +36,7 @@ public class Member extends User{
 
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
+        trainer.addMember(this);
     }
 
     public void setStartDate(LocalDate date) {

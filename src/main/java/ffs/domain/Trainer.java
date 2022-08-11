@@ -43,7 +43,6 @@ public class Trainer extends User{
 
     public void addMember(Member member){
         memberList.add(member);
-        member.setTrainer(this);
     }
 
     public void addLesson(Lesson lesson) {
