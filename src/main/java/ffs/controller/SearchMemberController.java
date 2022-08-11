@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +28,8 @@ public class SearchMemberController {
     }
 
     @GetMapping("/member")
-    public ResponseEntity<Object> getMemberByNameAndLastPhoneNumber(@RequestParam String name, @RequestParam String lastPhoneNumber) {
-        SearchMemberResponse response = searchMemberService.getMemberByName(name, lastPhoneNumber);
+    public ResponseEntity<Object> getMemberFromNameAndLastPhoneNumber(@RequestParam String name, @RequestParam String lastPhoneNumber) {
+        SearchMemberResponse response = searchMemberService.getMemberFromNameAndLastPhoneNumber(name, lastPhoneNumber);
 
         if(response == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

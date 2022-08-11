@@ -23,7 +23,7 @@ public class SearchMemberService {
         return memberList;
     }
 
-    public SearchMemberResponse getMemberByName(String name, String lastPhoneNumber) {
+    public SearchMemberResponse getMemberFromNameAndLastPhoneNumber(String name, String lastPhoneNumber) {
         List<Member> memberList = memberRepository.findByName(name);
         log.debug("Get member list by name. size={}", memberList.size());
 
@@ -32,12 +32,7 @@ public class SearchMemberService {
             return null;
         }
 
-        Member member;
-        if(memberList.size() == 1 && isSameLastPhoneNumber(memberList.get(0), lastPhoneNumber)) {
-            member = memberList.get(0);
-        } else {
-            member = getMemberOfSameLastPhoneNumber(memberList, lastPhoneNumber);
-        }
+        Member member = getMemberOfSameLastPhoneNumber(memberList, lastPhoneNumber);
 
         if(member == null) {
             log.error("Can not found member. memberName={}, lastNumber={}", name, lastPhoneNumber);
@@ -46,6 +41,7 @@ public class SearchMemberService {
 
         return getResponseByMember(member);
     }
+
 
     private Member getMemberOfSameLastPhoneNumber(List<Member> memberList, String lastPhoneNumber) {
         for(Member member : memberList) {
@@ -79,7 +75,7 @@ public class SearchMemberService {
                 .isPersonalTraining(member.isPersonalTraining())
                 .trainerName(member.getTrainer().getName())
                 .totalLessonCount(member.getPtMembership().getTotalLessonCount())
-                .totalLessonCount(member.getPtMembership().getUseLessonCount())
+                .useLessonCount(member.getPtMembership().getUseLessonCount())
                 .lessonList(member.getLessonList())
                 .build();
     }

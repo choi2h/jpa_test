@@ -31,18 +31,19 @@ public class InitDB {
         private final EntityManager em;
 
         public void insertDB() {
+            Trainer trainer = getTrainer("hwa");
+            em.persist(trainer);
+
             Member member1 = getMember("member1");
             member1.setPtMembership(getMembership(5));
+            member1.setTrainer(trainer);
             em.persist(member1);
 
             Member member2 = getMember("member2");
             member2.setPtMembership(getMembership(9));
+            member.setTrainer(trainer);
             em.persist(member2);
 
-            Trainer trainer = getTrainer("hwa");
-            trainer.addMember(member1);
-            trainer.addMember(member2);
-            em.persist(trainer);
 
             Lesson lesson = getLesson(member1, trainer);
             em.persist(lesson);
