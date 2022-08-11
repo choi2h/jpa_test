@@ -35,6 +35,11 @@ public class Member extends User{
     }
 
     public void setTrainer(Trainer trainer) {
+
+        if(this.trainer != null) {
+            this.trainer.removeMember(this);
+        }
+
         this.trainer = trainer;
         trainer.addMember(this);
     }

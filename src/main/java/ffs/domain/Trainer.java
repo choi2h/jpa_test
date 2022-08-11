@@ -41,8 +41,12 @@ public class Trainer extends User{
         this.workingHour = workingHour;
     }
 
-    public void addMember(Member member){
+    public void addMember(Member member) {
         memberList.add(member);
+    }
+
+    public void removeMember(Member member) {
+        memberList.remove(member);
     }
 
     public void addLesson(Lesson lesson) {
