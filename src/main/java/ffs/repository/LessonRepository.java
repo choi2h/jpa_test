@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface LessonRepository {
 
+    List<Lesson> findAll();
+
     Long save(Lesson lesson);
 
     Lesson findOne(Long id);

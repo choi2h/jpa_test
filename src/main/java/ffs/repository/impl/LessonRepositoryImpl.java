@@ -16,6 +16,11 @@ public class LessonRepositoryImpl implements LessonRepository {
 
     private final EntityManager em;
 
+    @Override
+    public List<Lesson> findAll() {
+        return em.createQuery("select l from Lesson l", Lesson.class).getResultList();
+    }
+
     public Long save(Lesson lesson) {
         em.persist(lesson);
 
@@ -24,6 +29,18 @@ public class LessonRepositoryImpl implements LessonRepository {
 
     public Lesson findOne(Long id) {
         return em.find(Lesson.class, id);
+    }
+
+    public List<Lesson> findByTrainer(Trainer trainer) {
+        return em.createQuery("select l from Lesson l where l.trainer = :trainer", Lesson.class)
+                .setParameter("trainer", trainer)
+                .getResultList();
+    }
+
+    public List<Lesson> findByMember(Member member) {
+        return em.createQuery("select l from Lesson l where l.member = :member", Lesson.class)
+                .setParameter("member", member)
+                .getResultList();
     }
 
     public List<Lesson> fineByTrainerAndMember(Trainer trainer, Member member) {
