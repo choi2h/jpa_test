@@ -32,24 +32,16 @@ public class LessonRepositoryImpl implements LessonRepository {
     }
 
     public List<Lesson> findByTrainer(String trainerName) {
-        return em.createQuery("select l from Lesson l join Trainer t " +
-                "on l.trainer.name = t.name where t.name = :trainerName", Lesson.class)
+        return em.createQuery("select l from Lesson l join l.trainer t " +
+                "where t.name = :trainerName", Lesson.class)
                 .setParameter("trainerName", trainerName)
                 .getResultList();
     }
 
     public List<Lesson> findByMember(String memberName) {
-        return em.createQuery("select l from Lesson l join Member m " +
-                        "on l.member.name = m.name where m.name = :memberName", Lesson.class)
+        return em.createQuery("select l from Lesson l join l.member m " +
+                        " where m.name = :memberName", Lesson.class)
                 .setParameter("memberName", memberName)
                 .getResultList();
     }
-
-    public List<Lesson> fineByTrainerAndMember(Trainer trainer, Member member) {
-        return em.createQuery("select l from Lesson l where l.trainer = :trainer and l.member = :member", Lesson.class)
-                .setParameter("trainer", trainer)
-                .setParameter("member", member)
-                .getResultList();
-    }
-
 }
