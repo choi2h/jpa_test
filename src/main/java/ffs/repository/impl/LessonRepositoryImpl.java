@@ -31,15 +31,17 @@ public class LessonRepositoryImpl implements LessonRepository {
         return em.find(Lesson.class, id);
     }
 
-    public List<Lesson> findByTrainer(Trainer trainer) {
-        return em.createQuery("select l from Lesson l where l.trainer = :trainer", Lesson.class)
-                .setParameter("trainer", trainer)
+    public List<Lesson> findByTrainer(String trainerName) {
+        return em.createQuery("select l from Lesson l join Trainer t " +
+                "on l.trainer.name = t.name where t.name = :trainerName", Lesson.class)
+                .setParameter("trainerName", trainerName)
                 .getResultList();
     }
 
-    public List<Lesson> findByMember(Member member) {
-        return em.createQuery("select l from Lesson l where l.member = :member", Lesson.class)
-                .setParameter("member", member)
+    public List<Lesson> findByMember(String memberName) {
+        return em.createQuery("select l from Lesson l join Member m " +
+                        "on l.member.name = m.name where m.name = :memberName", Lesson.class)
+                .setParameter("memberName", memberName)
                 .getResultList();
     }
 

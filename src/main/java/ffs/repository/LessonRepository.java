@@ -13,5 +13,8 @@ public interface LessonRepository {
     Long save(Lesson lesson);
 
     Lesson findOne(Long id);
+
+    List<Lesson> findByTrainer(String trainerName);
+    List<Lesson> findByMember(String memberName);
     List<Lesson> fineByTrainerAndMember(Trainer trainer, Member member);
 }

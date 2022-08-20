@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -41,6 +42,24 @@ public class LessonRepositoryTest {
         lessonRepository.save(lesson);
 
         Assertions.assertEquals(lesson, lessonRepository.fineByTrainerAndMember(lesson.getTrainer(), lesson.getMember()).get(0));
+    }
+
+    @Test
+    void getLessonsByTrainerTest() {
+        Lesson lesson = getLesson("trainer", "member");
+        lessonRepository.save(lesson);
+        List<Lesson> lessons = lessonRepository.findByTrainer("trainer");
+
+        Assertions.assertEquals(1, lessons.size());
+    }
+
+    @Test
+    void getLessonsByMemberTest() {
+        Lesson lesson = getLesson("trainer", "member");
+        lessonRepository.save(lesson);
+        List<Lesson> lessons = lessonRepository.findByMember("member");
+
+        Assertions.assertEquals(1, lessons.size());
     }
 
     private Lesson getLesson(String trainerName, String memberName) {
