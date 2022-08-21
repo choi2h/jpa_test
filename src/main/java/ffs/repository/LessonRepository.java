@@ -16,4 +16,6 @@ public interface LessonRepository {
 
     List<Lesson> findByTrainer(String trainerName);
     List<Lesson> findByMember(String memberName);
+
+    List<Lesson> findByNameOfTrainerAndMember(String trainerName, String memberName);
 }

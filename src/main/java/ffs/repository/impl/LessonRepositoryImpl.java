@@ -1,8 +1,6 @@
 package ffs.repository.impl;
 
 import ffs.domain.Lesson;
-import ffs.domain.Member;
-import ffs.domain.Trainer;
 import ffs.repository.LessonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -41,6 +39,18 @@ public class LessonRepositoryImpl implements LessonRepository {
     public List<Lesson> findByMember(String memberName) {
         return em.createQuery("select l from Lesson l join l.member m " +
                         " where m.name = :memberName", Lesson.class)
+                .setParameter("memberName", memberName)
+                .getResultList();
+    }
+
+    @Override
+    public List<Lesson> findByNameOfTrainerAndMember(String trainerName, String memberName) {
+        return em.createQuery("select l from Lesson l " +
+                "join fetch l.trainer t " +
+                "join fetch l.member m " +
+                "where t.name = :trainerName " +
+                "and m.name = :memberName")
+                .setParameter("trainerName", trainerName)
                 .setParameter("memberName", memberName)
                 .getResultList();
     }
