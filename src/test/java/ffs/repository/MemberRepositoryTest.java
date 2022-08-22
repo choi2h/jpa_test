@@ -1,7 +1,7 @@
 package ffs.repository;
 
 import ffs.domain.Member;
-import ffs.repository.impl.MemberRepositoryImpl;
+import ffs.repository.member.MemberRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
