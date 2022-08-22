@@ -1,7 +1,7 @@
-package ffs.repository.impl;
+package ffs.repository.trainer.impl;
 
 import ffs.domain.Trainer;
-import ffs.repository.TrainerRepository;
+import ffs.repository.trainer.TrainerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

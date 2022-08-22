@@ -1,4 +1,4 @@
-package ffs.repository;
+package ffs.repository.lesson;
 
 import ffs.domain.Lesson;
 import ffs.domain.Member;

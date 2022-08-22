@@ -1,4 +1,4 @@
-package ffs.repository;
+package ffs.repository.member;
 
 import ffs.domain.Member;
 

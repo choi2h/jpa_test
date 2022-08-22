@@ -1,4 +1,4 @@
-package ffs.repository;
+package ffs.repository.trainer;
 
 import ffs.domain.Trainer;
 

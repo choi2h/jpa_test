@@ -1,7 +1,7 @@
-package ffs.repository.impl;
+package ffs.repository.member;
 
 import ffs.domain.Member;
-import ffs.repository.MemberRepository;
+import ffs.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
