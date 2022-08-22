@@ -1,7 +1,7 @@
-package ffs.controller;
+package ffs.controller.lesson;
 
 import ffs.dto.response.lesson.LessonInfo;
-import ffs.service.SearchLessonService;
+import ffs.service.lesson.SearchLessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

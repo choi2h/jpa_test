@@ -1,4 +1,4 @@
-package ffs.service;
+package ffs.service.trainer;
 
 import ffs.domain.Trainer;
 import ffs.dto.response.trainer.SearchTrainerResponse;

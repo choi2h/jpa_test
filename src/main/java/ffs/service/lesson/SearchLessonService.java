@@ -1,4 +1,4 @@
-package ffs.service;
+package ffs.service.lesson;
 
 import ffs.domain.Lesson;
 import ffs.domain.Member;

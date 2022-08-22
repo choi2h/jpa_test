@@ -41,7 +41,7 @@ public class InitDB {
 
             Member member2 = getMember("member2");
             member2.setPtMembership(getMembership(9));
-            member.setTrainer(trainer);
+            member2.setTrainer(trainer);
             em.persist(member2);
 
 

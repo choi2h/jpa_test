@@ -1,8 +1,8 @@
-package ffs.controller;
+package ffs.controller.member;
 
 import ffs.domain.Member;
 import ffs.dto.response.member.SearchMemberResponse;
-import ffs.service.SearchMemberService;
+import ffs.service.member.SearchMemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package ffs.service;
+package ffs.service.member;
 
 import ffs.domain.Member;
 import ffs.dto.response.member.SearchMemberResponse;

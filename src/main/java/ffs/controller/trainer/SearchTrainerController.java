@@ -1,8 +1,8 @@
-package ffs.controller;
+package ffs.controller.trainer;
 
 import ffs.domain.Trainer;
 import ffs.dto.response.trainer.SearchTrainerResponse;
-import ffs.service.SearchTrainerService;
+import ffs.service.trainer.SearchTrainerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

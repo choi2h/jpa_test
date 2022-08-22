@@ -26,7 +26,7 @@ public class TrainerRepositoryTest {
         Trainer trainer = getTrainer("trainer");
         Long id = trainerRepository.save(trainer);
 
-        Assertions.assertEquals(trainer, trainerRepository.getOne(id));
+        Assertions.assertEquals(trainer, trainerRepository.findOne(id));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TrainerRepositoryTest {
         trainerRepository.save(trainer1);
         trainerRepository.save(trainer2);
 
-        Assertions.assertEquals(2, trainerRepository.getAll().size());
+        Assertions.assertEquals(2, trainerRepository.findAll().size());
     }
 
     @Test
