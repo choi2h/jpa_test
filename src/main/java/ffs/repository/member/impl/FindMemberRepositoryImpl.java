@@ -1,7 +1,7 @@
-package ffs.repository.member;
+package ffs.repository.member.impl;
 
 import ffs.domain.Member;
-import ffs.repository.member.MemberRepository;
+import ffs.repository.member.FindMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -10,15 +10,9 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class MemberRepositoryImpl implements MemberRepository {
+public class FindMemberRepositoryImpl implements FindMemberRepository {
 
     private final EntityManager em;
-
-    public Long save(Member member) {
-        em.persist(member);
-
-        return member.getId();
-    }
 
     public Member findOne(Long id) {
         return em.find(Member.class, id);

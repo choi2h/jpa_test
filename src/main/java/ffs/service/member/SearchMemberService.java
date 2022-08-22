@@ -2,7 +2,7 @@ package ffs.service.member;
 
 import ffs.domain.Member;
 import ffs.dto.response.member.SearchMemberResponse;
-import ffs.repository.MemberRepository;
+import ffs.repository.member.FindMemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SearchMemberService {
 
-    private final MemberRepository memberRepository;
+    private final FindMemberRepository memberRepository;
 
     public List<Member> getAllMemberList() {
         List<Member> memberList = memberRepository.findAll();
@@ -67,6 +67,18 @@ public class SearchMemberService {
     }
 
     private SearchMemberResponse getResponseByMember(Member member) {
+        SearchMemberResponse response;
+
+        if(member.isPersonalTraining()) {
+            response = getPTMembershipMember(member);
+        } else {
+            response = getDefaultMemberInformation(member);
+        }
+
+        return response;
+    }
+
+    private SearchMemberResponse getPTMembershipMember(Member member) {
         return SearchMemberResponse.builder()
                 .name(member.getName())
                 .phoneNumber(member.getPhoneNumber())
@@ -78,6 +90,15 @@ public class SearchMemberService {
                 .useLessonCount(member.getPtMembership().getUseLessonCount())
                 .lessonList(member.getLessonList())
                 .build();
+    }
+
+    private SearchMemberResponse getDefaultMemberInformation(Member member) {
+        return SearchMemberResponse.builder()
+                .name(member.getName())
+                .phoneNumber(member.getPhoneNumber())
+                .startDate(member.getStartDate())
+                .endDate(member.getEndDate())
+                .isPersonalTraining(member.isPersonalTraining()).build();
     }
 
 

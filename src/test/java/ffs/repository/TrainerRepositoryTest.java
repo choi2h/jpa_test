@@ -1,7 +1,7 @@
 package ffs.repository;
 
 import ffs.domain.Trainer;
-import ffs.repository.impl.TrainerRepositoryImpl;
+import ffs.repository.trainer.TrainerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

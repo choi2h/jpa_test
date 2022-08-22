@@ -2,7 +2,7 @@ package ffs.service.trainer;
 
 import ffs.domain.Trainer;
 import ffs.dto.response.trainer.SearchTrainerResponse;
-import ffs.repository.TrainerRepository;
+import ffs.repository.trainer.TrainerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

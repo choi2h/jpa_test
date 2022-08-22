@@ -1,12 +1,8 @@
 package ffs.service.lesson;
 
 import ffs.domain.Lesson;
-import ffs.domain.Member;
-import ffs.domain.Trainer;
 import ffs.dto.response.lesson.LessonInfo;
-import ffs.repository.LessonRepository;
-import ffs.repository.MemberRepository;
-import ffs.repository.TrainerRepository;
+import ffs.repository.lesson.LessonRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

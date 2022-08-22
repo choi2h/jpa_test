@@ -3,7 +3,7 @@ package ffs.repository;
 import ffs.domain.Lesson;
 import ffs.domain.Member;
 import ffs.domain.Trainer;
-import ffs.repository.impl.LessonRepositoryImpl;
+import ffs.repository.lesson.LessonRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
